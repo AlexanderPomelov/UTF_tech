@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  db:
+    image: postgres:latest
+    privileged: true
+    container_name: db
+    environment:
+      - POSTGRES_DB=UTF_tech
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1
+
+  django:
+    build: .
+    container_name: utf_container
+    command: python3 manage.py runserver 127.0.0.1:8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+
+    depends_on:
+      - db
+    environment:
+      - POSTGRES_DB=UTF_tech
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1
