@@ -2,7 +2,7 @@
 
 1.Запускаем контейнер
 
-    docker-compose up -d --build
+    docker-compose up -d
 
 2.Применяем миграции
 
